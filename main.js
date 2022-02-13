@@ -4,7 +4,6 @@ const computerPlay = () => {
     random = Math.floor(Math.random() * choices.length);
     return choices[random];
 };
-//let computerChoice = computerPlay();
 //a single round
 const playRound = (playerSelection, computerSelection) => {
     if (playerSelection.toLowerCase() === "rock" && computerSelection === "Paper") {
@@ -23,55 +22,36 @@ const playRound = (playerSelection, computerSelection) => {
         return `You: ${playerSelection} computer: ${computerSelection} You tie`;
     }
 };
-//console.log(playRound(userChoice, computerChoice));
-//test to see the result of each round
-const checkResult = (round) => {
+const playGame = () => {
+    // regex for testing if the user won
     let winTest = /win/;
+    // regex for testing if the user lost
     let loseTest = /lose/;
+    // user score
     let userWin = 0;
-    let computerWin = 0;
-    // checks if the user wins
-    if (winTest.test(round)) {
-        userWin += 1;
-        //checks to see if the computer wins
-    } else if (loseTest.test(round)) {
-       computerWin += 1;
-    } return [computerWin, userWin];
-};
-//console.log(checkResult(playRound(userChoice, "Scissors")));
-/* a game with 5 rounds that keeps the score and reports who won */
-//loop through the play round 5 times
-// keep score through a count and display it after every loop
-// after 5 rounds declare a winner
-// console.log(playRound(userPlay(), computerPlay()));
-
-const game = () => {
-    let winTest = /win/;
-    let loseTest = /lose/;
-    let userWin = 0;
+    //computer score
     let computerWin = 0
     for (let round = 1; round <= 5; round++) {
         let computerChoice = computerPlay();
         let userChoice = prompt("Rock, Paper, or Scissors");
         let oneRound = playRound(userChoice, computerChoice);
         console.log(oneRound);
+        //checking to see the result of the playRound function
         if (winTest.test(oneRound)) {
             userWin++;
         } else if (loseTest.test(oneRound)) {
            computerWin++;
         };
         console.log(`User: ${userWin} Computer ${computerWin}`);
-        console.log(`Round: ${round}`)
-
-
-
+        console.log(`Round: ${round}`);
     }
+    // checking to see who had the higher score after the rounds are up
     if (userWin > computerWin) {
-        console.log("Congrats! You Win");
+        return "Congrats! You Win";
     } else if (userWin < computerWin) {
-        console.log("Sorry! You lose");
+        return "Sorry! You lose";
     } else {
-        console.log("Try again! You tied");
+        return "Try again! You tied";
     }
 };
-console.log(game())
+console.log(playGame());
