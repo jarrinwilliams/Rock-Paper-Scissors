@@ -1,11 +1,11 @@
 //computer choice
-const computerPlay = () => {
+function computerPlay() {
     let choices = ["Rock", "Paper", "Scissors"];
     random = Math.floor(Math.random() * choices.length);
     return choices[random];
 };
 //a single round
-const playRound = (playerSelection, computerSelection) => {
+function playRound(playerSelection, computerSelection) {
     if (playerSelection.toLowerCase() === "rock" && computerSelection === "Paper") {
         return `You: ${playerSelection} computer: ${computerSelection} You lose`;
     } else if (playerSelection.toLowerCase() === "rock" && computerSelection === "Scissors") {
@@ -33,6 +33,7 @@ const playGame = () => {
     let computerWin = 0
     for (let round = 1; round <= 5; round++) {
         let computerChoice = computerPlay();
+        let rock
         let userChoice = prompt("Rock, Paper, or Scissors");
         let oneRound = playRound(userChoice, computerChoice);
         console.log(oneRound);
@@ -54,4 +55,13 @@ const playGame = () => {
         return "Try again! You tied";
     }
 };
-console.log(playGame());
+const buttons = document.querySelectorAll('button');
+const resultHeader = document.querySelector('.resultHeader');
+buttons.forEach((button) => {
+    button.addEventListener('click', function(e) {
+        const resultHeader = document.querySelector('.resultHeader');
+        const computerChoice = computerPlay();
+        result = playRound(e.target.innerText, computerChoice);
+        resultHeader.textContent = result;
+    })
+})
