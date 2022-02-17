@@ -22,7 +22,7 @@ function playRound(playerSelection, computerSelection) {
         return `You: ${playerSelection} computer: ${computerSelection} You tie`;
     }
 };
-const playGame = () => {
+const game = () => {
     // regex for testing if the user won
     let winTest = /win/;
     // regex for testing if the user lost
@@ -55,13 +55,30 @@ const playGame = () => {
         return "Try again! You tied";
     }
 };
+const winTest = /win/;
+const loseTest = /lose/;
+let computerScore = 0;
+let userScore = 0;
 const buttons = document.querySelectorAll('button');
 const resultHeader = document.querySelector('.resultHeader');
 buttons.forEach((button) => {
-    button.addEventListener('click', function(e) {
-        const resultHeader = document.querySelector('.resultHeader');
-        const computerChoice = computerPlay();
-        result = playRound(e.target.innerText, computerChoice);
-        resultHeader.textContent = result;
-    })
-})
+    button.addEventListener('click', playGame)
+});
+function playGame(e) {
+    const resultScore = document.querySelector('.resultScore')
+    const resultHeader = document.querySelector('.resultHeader');
+    const computerChoice = computerPlay();
+    result = playRound(e.target.innerText, computerChoice);
+    resultHeader.textContent = result;
+    if (winTest.test(result)) {
+        userScore++;
+    } else if (loseTest.test(result)) {
+        computerScore++;
+    }
+    resultScore.textContent = `User: ${userScore} Computer: ${computerScore}`;
+    if (userScore === 5) {
+        alert('Congrats! You win')
+    } else if (computerScore === 5) {
+        alert('Sorry! You lose')
+    }
+}
