@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 10px;
+    background: url(./background.jpeg) no-repeat center center fixed;
+    background-size: cover;
+}
+.rock {
+    background: url(./button-rock.jpeg) no-repeat center;
+    
+}
+.paper {
+    background: url(./button-paper.jpeg) no-repeat center;
+    
+}
+.scissors {
+    background: url(./button-scissors.jpeg) no-repeat center;
+    
+}
+.choiceBtn {
+    background-size: cover;
+    padding: 8rem;
+    border-radius: 50%;
+    font-family: monospace;
+    font-size: 2rem;
+}
+.choiceBtn:hover {
+    border: .5rem solid #f2f735;
+    cursor: pointer;
+}
+.choiceContainer {
+    display: flex;
+    justify-content: space-around;
+    margin: 2rem;
+}
+.resultContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 30rem;
+    align-items: center;
+}
+.resultHeader {
+    font-size: 4rem;
+    font-family: monospace;
+}
+.resultScore {
+    font-family: monospace;
+    font-size: 4rem;
+}
+.resultDeclaration {
+    font-family: monospace;
+    font-size: 6rem;
+}
+.resultBtn {
+    cursor: pointer;
+    background: transparent;
+    display: block;
+    margin: 2rem auto;
+    font-size: 6rem;
+    font-family: monospace;
+    padding: 2rem;
+    border-radius: 1rem;
+    border: none;
+}
+.resultBtn:hover {
+    background: black;
+    color: white;
+}

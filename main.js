@@ -59,13 +59,14 @@ const winTest = /win/;
 const loseTest = /lose/;
 let computerScore = 0;
 let userScore = 0;
-const buttons = document.querySelectorAll('button');
+const buttons = document.querySelectorAll('.choiceBtn');
 const resultHeader = document.querySelector('.resultHeader');
 buttons.forEach((button) => {
-    button.addEventListener('click', playGame)
+    button.addEventListener('click', playGame);
 });
 function playGame(e) {
-    const resultScore = document.querySelector('.resultScore')
+    const resultDec = document.querySelector('.resultDeclaration');
+    const resultScore = document.querySelector('.resultScore');
     const resultHeader = document.querySelector('.resultHeader');
     const computerChoice = computerPlay();
     result = playRound(e.target.innerText, computerChoice);
@@ -77,8 +78,21 @@ function playGame(e) {
     }
     resultScore.textContent = `User: ${userScore} Computer: ${computerScore}`;
     if (userScore === 5) {
-        alert('Congrats! You win')
+       resultDec.textContent = 'Congrats! You win';
     } else if (computerScore === 5) {
-        alert('Sorry! You lose')
+        resultDec.textContent = 'Sorry! You lose';
     }
+    if (userScore === 5 || computerScore === 5) {
+        resultHeader.style.visibility = 'hidden';
+        resultScore.style.visibility = 'hidden';
+        const resetBtn = document.createElement('button');
+        resetBtn.textContent = 'Play Again';
+        resultDec.appendChild(resetBtn);
+        resetBtn.classList.add('resultBtn');
+        resetBtn.addEventListener('click', refreshPage);
+    }
+};
+function refreshPage() {
+    window.location.reload();
 }
+

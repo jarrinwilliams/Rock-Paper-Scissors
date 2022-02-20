@@ -5,18 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./main.js" defer></script>
+    <link rel="stylesheet" href="./main.css">
     <title>Rock paper scissors</title>
 </head>
 <body>
     <div class="gameContainer">
-        <button class="rockBtn">Rock</button>
-        <button class="paperBtn">Paper</button>
-        <button class="scissorsBtn">Scissors</button>
+        <div class="choiceContainer">
+            <button class="choiceBtn rock">Rock</button>
+            <button class="choiceBtn paper">Paper</button>
+            <button class="choiceBtn scissors">Scissors</button>
+        </div>
         <div class="resultContainer">
-            <h1 class="resultHeader"></h1>
+            <p class="resultHeader"></p>
             <p class="resultScore"></p>
+            <p class="resultDeclaration"></p>
         </div>
     </div>
-        
 </body>
 </html>
